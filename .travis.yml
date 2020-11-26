@@ -63,7 +63,7 @@ before_install:
   - if [ "$TRAVIS_CPU_ARCH" = "arm64" ]; then python3 --version; fi
   - if [ "$TRAVIS_CPU_ARCH" = "arm64" ]; then python3.7 --version; fi
   - if [ "$TRAVIS_CPU_ARCH" = "arm64" ]; then python3.7 -m pip --version; fi
-    - if [ "$TRAVIS_CPU_ARCH" = "arm64" ]; then python3.7 -m pip install virtualenv; fi
+  - if [ "$TRAVIS_CPU_ARCH" = "arm64" ]; then python3.7 -m pip install virtualenv; fi
   - if [ "$TRAVIS_CPU_ARCH" = "arm64" ]; then deactivate && python3.7 -m virtualenv venv --python=python3.7 --system-site-packages && source venv/bin/activate; fi
   # Python 3 installation required
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then pyenv install $TRAVIS_OSX_PY_VER; fi
