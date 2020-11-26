@@ -32,6 +32,16 @@ matrix:
         - xvfb
       env:
         - QT_QPA_PLATFORM="offscreen"
+    - os: linux
+      dist: bionic
+      arch: arm64
+      sudo: required
+      language: python
+      python: 3.7
+      services:
+        - xvfb
+      env:
+        - QT_QPA_PLATFORM="offscreen"
     - os: osx
       # match xcode version with earliest supported by current PyQt 
       # (earliest to maximize compatibility)
@@ -49,7 +59,11 @@ before_install:
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get update; fi
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then sudo apt-get install libxkbcommon-x11-0; fi
   # Use a new virtual environment with system packages for arm64
-  - if [ "$TRAVIS_CPU_ARCH" = "arm64" ]; then deactivate && virtualenv venv --python=python3 --system-site-packages && source venv/bin/activate; fi
+  - if [ "$TRAVIS_CPU_ARCH" = "arm64" ]; then sudo apt-get install -y python3.7 python3-pip; fi
+  - if [ "$TRAVIS_CPU_ARCH" = "arm64" ]; then python3 --version; fi
+  - if [ "$TRAVIS_CPU_ARCH" = "arm64" ]; then python3.7 --version; fi
+  - if [ "$TRAVIS_CPU_ARCH" = "arm64" ]; then python3.7 -m pip --version; fi
+  - if [ "$TRAVIS_CPU_ARCH" = "arm64" ]; then deactivate && virtualenv venv --python=python3.7 --system-site-packages && source venv/bin/activate; fi
   # Python 3 installation required
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then pyenv install $TRAVIS_OSX_PY_VER; fi
   - if [ "$TRAVIS_OS_NAME" = "osx" ]; then pyenv global $TRAVIS_OSX_PY_VER; fi
