@@ -25,17 +25,17 @@ install_requires = [
     # The core 'install_requires' should only be things
     # which are needed for the main editor to function.
     #
-    "PyQt5==5.13.2"
+    "PyQt5==5.15.2"
     + ';"arm" not in platform_machine and "aarch" not in platform_machine',
-    "QScintilla==2.11.3"
+    "QScintilla==2.11.6"
     + ';"arm" not in platform_machine and "aarch" not in platform_machine',
-    "PyQtChart==5.13.1"
+    "PyQtChart==5.15.2"
     + ';"arm" not in platform_machine and "aarch" not in platform_machine',
     #
     # FIXME: Maybe should be in a mode?
     # qtconsole, pyserial
     #
-    "qtconsole==4.7.4",
+    "qtconsole==4.7.7",
     "pyserial==3.4",
     # `flake8` is actually a testing/packaging dependency that, among other
     # packages, brings in `pycodestyle` and `pyflakes` which are runtime
